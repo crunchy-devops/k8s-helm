@@ -1,10 +1,11 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-one
+  name: pvc-three
 spec:
   accessModes:
     - ReadWriteMany
   resources:
     requests:
       storage: 500Mi
+  volumeName: pvvol-3
