@@ -20,8 +20,11 @@ sudo exportfs -ra   # reload for the change takes effect
 sudo apt-get update 
 sudo apt-get -y install nfs-common  # add  nfs client package
 showmount -e <master_address_ip>   # check whether the shared mount works
-
+````
 ## Installer Helm
+
+### for katacoda
+use helm version already installed   
 
 ### Install using helm source code
 ```shell script
@@ -38,7 +41,8 @@ helm version # check
 ```shell script
     helm repo add bitnami https://charts.bitnami.com/bitnami  # assign a repo to helm 
     helm repo update  # check for update
-    helm search repo bitnami  # list oll chart in bitnami helm repo
+    helm search repo bitnami  # list all charts in bitnami helm repo
+    # edit pvol.yaml file and change your nfs server ip address
     k create -f pvol.yaml  # Create a persistent volume using nfs
     k get pv  # check
     k create -f pvolclaim.yaml # Create a persistent volume claim 
