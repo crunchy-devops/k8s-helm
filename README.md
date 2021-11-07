@@ -1,6 +1,6 @@
 # Lab-helm
 
-## Install  NFS on master  
+## Install  NFS server on master  
 ```shell
 # deploy first
 sudo apt-get update   # update package
@@ -15,7 +15,7 @@ sudo vi /etc/exports
 sudo exportfs -ra   # reload for the change takes effect
 ```
 
-## Install nfs on the node1
+## Install nfs on node1
 ```shell
 sudo apt-get update 
 sudo apt-get -y install nfs-common  # add  nfs client package
@@ -23,8 +23,8 @@ showmount -e <master_address_ip>   # check whether the shared mount works
 ````
 ## Installer Helm
 
-### for katacoda
-use helm version already installed   
+### for katacoda session 
+Use the helm version already installed   
 
 ### Install using helm source code
 ```shell script
@@ -60,5 +60,7 @@ helm version # check
      k port-forward svc/mysql-bitnami 3306  # port forward the mysql port
      # open an other shell 
      mysql -h 127.0.0.1 -P 3306 -u root -p # check, you should get mysql database prompt
+     # change ClusterIP to NodePort this will enable access to this outside world
+     kubectl patch svc mysql-bitnami -p '{"spec": {"type": "NodePort"}}' 
 ``` 
 
